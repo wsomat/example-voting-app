@@ -205,11 +205,8 @@ pipeline {
             voteImage.push("latest")
           }
         }
-
       }
     }
-
-
     stage('deploy to dev') {
       agent any
       when {
@@ -219,8 +216,7 @@ pipeline {
         echo 'Deploy instavote app with docker compose'
         sh 'docker-compose up -d'
       }
-    }
-    
+    }    
   }
   post{
     always{
