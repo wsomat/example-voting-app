@@ -36,9 +36,8 @@ pipeline {
           echo 'Running Unit Tets on worker app..'
           dir('worker'){
             sh 'mvn clean test'
-           }
-
           }
+        }
       }
       stage("worker-package"){
         when{
@@ -57,7 +56,6 @@ pipeline {
             sh 'mvn package -DskipTests'
             archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
           }
-
         }
       }
 
