@@ -77,7 +77,7 @@ pipeline {
             }
           }
       }
-  }
+ 
     stage('result-build') {
       agent {
         docker {
