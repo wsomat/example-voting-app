@@ -247,9 +247,8 @@ pipeline {
         echo 'Deploy instavote app with docker compose'
         sh 'docker-compose up -d'
       }
-    }    
-  }
-  stage('Trigger deployment') {
+    }
+    stage('Trigger deployment') {
       agent any
       environment{
         def GIT_COMMIT = "${env.GIT_COMMIT}"
@@ -260,7 +259,8 @@ pipeline {
         // passing variables to job deployment run by vote-deploy repository Jenkinsfile
         build job: 'deployment', parameters: [string(name: 'DOCKERTAG', value: GIT_COMMIT)]
       }    
-   }
+    }
+  }
   post{
     always{
         echo 'Building mono pipeline for voting app is completed..'
